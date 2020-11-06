@@ -1,8 +1,8 @@
-import { Box, Flex, Link as ChakraLink, useColorMode } from "@chakra-ui/core";
+import { Box, Link as ChakraLink, useColorMode } from "@chakra-ui/core";
 import { Container } from "../components/Container";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import { Navbar } from "../components/Navbar";
-import useGetKanye from "../hooks/useGetKanye";
+import useFetch from "../hooks/useFetch";
 
 interface IndexProps {
   defaultColor: string;
@@ -15,7 +15,7 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
     dark: `${defaultColor}.200`,
   };
 
-  const { data, error } = useGetKanye();
+  const { data, error } = useFetch();
 
   return (
     <Container minHeight="100vh">
@@ -24,22 +24,7 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
         <ChakraLink href="/">Home</ChakraLink>
       </Navbar>
       <Box mt="30vh" maxW="48rem">
-        {error ? (
-          "Whoops."
-        ) : (
-          <>
-            <Box m="1rem">{data}</Box>
-            <Flex justifyContent="flex-end" m="1rem">
-              <ChakraLink
-                isExternal
-                href="https://kanye.rest/"
-                color={themeColor[colorMode]}
-              >
-                kanye.rest
-              </ChakraLink>
-            </Flex>
-          </>
-        )}
+        {error ? "Whoops." : data}
       </Box>
     </Container>
   );

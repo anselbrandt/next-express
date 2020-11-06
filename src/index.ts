@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import express from "express";
+import cors from "cors";
 import http from "http";
 import Redis from "ioredis";
 import { RedisPubSub } from "graphql-redis-subscriptions";
@@ -20,13 +21,20 @@ const main = async () => {
 
   const app = express();
 
+  app.use(
+    cors({
+      origin: true,
+      credentials: true,
+    })
+  );
+
   app.use((req: any, _, next: any) => {
     req.pubsub = pubsub;
     next();
   });
 
   app.get("/", (_, res) => {
-    res.send("API server up and running.");
+    res.send("Nothing to see here.");
   });
 
   const apolloServer = new ApolloServer({

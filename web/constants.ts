@@ -1,4 +1,7 @@
 export const WEBSOCKET = process.env.NEXT_PUBLIC_WEBSOCKET;
 
 export const HTTP =
-  process.env.NEXT_PUBLIC_HTTP || "https://api.spacex.land/graphql/";
+  process.env.NEXT_PUBLIC_HTTP || "http://localhost:4000/graphql/";
+
+export const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/core";
 import { CheckCircleIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import { Hero } from "../components/Hero";
-import Spacex from "../components/Spacex";
+import LocalGraphql from "../components/LocalGraphql";
 import { Container } from "../components/Container";
 import { Main } from "../components/Main";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
@@ -40,7 +40,7 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
       </Navbar>
       <Hero />
       <Main>
-        <Spacex defaultColor={defaultColor} />
+        <LocalGraphql defaultColor={defaultColor} />
       </Main>
       <Footer>
         <Text>
