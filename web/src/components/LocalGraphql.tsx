@@ -24,11 +24,14 @@ const LocalGraphql: React.FC<LocalGraphqlProps> = ({ defaultColor, props }) => {
         borderColor={themeColor[colorMode]}
         mt="1rem"
         p="1.75rem"
-        pb="1rem"
         {...props}
       >
         <Box mb="1rem">Status:</Box>
-        {data ? <Box textAlign="center">{data.hello.status}</Box> : null}
+        {data ? (
+          <Box textAlign="center" mb="2rem">
+            {data.hello.status}
+          </Box>
+        ) : null}
       </Box>
     </Box>
   );
