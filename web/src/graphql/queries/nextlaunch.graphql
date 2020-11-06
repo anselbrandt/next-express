@@ -1,0 +1,9 @@
+query NextLaunch {
+  launchNext {
+    rocket {
+      rocket_name
+    }
+    details
+    launch_date_unix
+  }
+}
