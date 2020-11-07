@@ -23,7 +23,13 @@ export type Status = {
 
 export type Subscription = {
   __typename?: 'Subscription';
-  subscription: Scalars['String'];
+  subscription: Notification;
+};
+
+export type Notification = {
+  __typename?: 'Notification';
+  message: Scalars['String'];
+  time: Scalars['Float'];
 };
 
 export type ServerStatusQueryVariables = Exact<{ [key: string]: never; }>;
@@ -34,6 +40,17 @@ export type ServerStatusQuery = (
   & { hello: (
     { __typename?: 'Status' }
     & Pick<Status, 'status'>
+  ) }
+);
+
+export type QueryNotificationSubscriptionVariables = Exact<{ [key: string]: never; }>;
+
+
+export type QueryNotificationSubscription = (
+  { __typename?: 'Subscription' }
+  & { subscription: (
+    { __typename?: 'Notification' }
+    & Pick<Notification, 'message' | 'time'>
   ) }
 );
 
@@ -70,3 +87,32 @@ export function useServerStatusLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type ServerStatusQueryHookResult = ReturnType<typeof useServerStatusQuery>;
 export type ServerStatusLazyQueryHookResult = ReturnType<typeof useServerStatusLazyQuery>;
 export type ServerStatusQueryResult = Apollo.QueryResult<ServerStatusQuery, ServerStatusQueryVariables>;
+export const QueryNotificationDocument = gql`
+    subscription QueryNotification {
+  subscription {
+    message
+    time
+  }
+}
+    `;
+
+/**
+ * __useQueryNotificationSubscription__
+ *
+ * To run a query within a React component, call `useQueryNotificationSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useQueryNotificationSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useQueryNotificationSubscription({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useQueryNotificationSubscription(baseOptions?: Apollo.SubscriptionHookOptions<QueryNotificationSubscription, QueryNotificationSubscriptionVariables>) {
+        return Apollo.useSubscription<QueryNotificationSubscription, QueryNotificationSubscriptionVariables>(QueryNotificationDocument, baseOptions);
+      }
+export type QueryNotificationSubscriptionHookResult = ReturnType<typeof useQueryNotificationSubscription>;
+export type QueryNotificationSubscriptionResult = Apollo.SubscriptionResult<QueryNotificationSubscription>;

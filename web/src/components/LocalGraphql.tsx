@@ -1,6 +1,15 @@
 import { Box, useColorMode, BoxProps } from "@chakra-ui/core";
 import { withApollo } from "../utils/withApollo";
-import { useServerStatusQuery } from "../generated/graphql";
+import {
+  useServerStatusQuery,
+  useQueryNotificationSubscription,
+} from "../generated/graphql";
+import { useEffect, useState } from "react";
+
+interface Notification {
+  message: string;
+  time: number;
+}
 
 interface LocalGraphqlProps {
   defaultColor: string;
@@ -14,7 +23,19 @@ const LocalGraphql: React.FC<LocalGraphqlProps> = ({ defaultColor, props }) => {
     dark: `${defaultColor}.200`,
   };
 
-  const { data } = useServerStatusQuery();
+  const { data: qdata } = useServerStatusQuery();
+  const { data: subdata } = useQueryNotificationSubscription();
+
+  const [notification, setNotification] = useState<Notification | undefined>();
+
+  useEffect(() => {
+    if (subdata && subdata.subscription) {
+      const message = subdata.subscription.message;
+      const time = subdata.subscription.time;
+      const newNotification = { message: message, time: time };
+      setNotification(newNotification);
+    }
+  }, [subdata]);
 
   return (
     <Box>
@@ -27,9 +48,14 @@ const LocalGraphql: React.FC<LocalGraphqlProps> = ({ defaultColor, props }) => {
         {...props}
       >
         <Box mb="1rem">Status:</Box>
-        {data ? (
+        {qdata ? (
           <Box textAlign="center" mb="2rem">
-            {data.hello.status}
+            {qdata.hello.status}
+          </Box>
+        ) : null}
+        {notification ? (
+          <Box textAlign="center" mb="2rem">
+            {notification.message} at {notification.time}
           </Box>
         ) : null}
       </Box>

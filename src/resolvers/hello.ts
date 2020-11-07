@@ -13,6 +13,14 @@ class Status {
   status: string;
 }
 
+@ObjectType()
+class Notification {
+  @Field()
+  message: string;
+  @Field()
+  time: number;
+}
+
 @Resolver()
 export class HelloResolver {
   @Query(() => Status)
@@ -22,10 +30,12 @@ export class HelloResolver {
     return status;
   }
 
-  @Subscription(() => String, {
+  @Subscription(() => Notification, {
     topics: "MESSAGES",
   })
   async subscription(): Promise<any> {
-    return "User query";
+    const time = Date.now();
+    const notification = { message: "New user query", time: time };
+    return notification;
   }
 }
