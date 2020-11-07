@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 interface Notification {
   message: string;
-  time: number;
+  time: string;
 }
 
 interface LocalGraphqlProps {
@@ -31,7 +31,7 @@ const LocalGraphql: React.FC<LocalGraphqlProps> = ({ defaultColor, props }) => {
   useEffect(() => {
     if (subdata && subdata.subscription) {
       const message = subdata.subscription.message;
-      const time = subdata.subscription.time;
+      const time = new Date(subdata.subscription.time).toLocaleTimeString();
       const newNotification = { message: message, time: time };
       setNotification(newNotification);
     }
