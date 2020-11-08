@@ -9,12 +9,6 @@ interface IndexProps {
 }
 
 const Index: React.FC<IndexProps> = ({ defaultColor }) => {
-  const { colorMode } = useColorMode();
-  const themeColor = {
-    light: `${defaultColor}.500`,
-    dark: `${defaultColor}.200`,
-  };
-
   const { data, error } = useFetch();
 
   return (
