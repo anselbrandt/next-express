@@ -1,4 +1,4 @@
-import { Box, Link as ChakraLink, useColorMode } from "@chakra-ui/core";
+import { Box, Link as ChakraLink } from "@chakra-ui/core";
 import { Container } from "../components/Container";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import { Navbar } from "../components/Navbar";
