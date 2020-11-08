@@ -1,0 +1,6 @@
+{
+  "name": "Express GraphQL",
+  "description": "Typescript GraphQL backend running on Express and Apollo Server",
+  "repository": "https://github.com/anselbrandt/next-express",
+  "keywords": ["node", "express", "graphql", "typescript"]
+}

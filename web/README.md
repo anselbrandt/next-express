@@ -1,16 +1,38 @@
-# Next.js with Express GraphQL backend, written in Typescript
+# Next.js with Express GraphQL server, in Typescript
 
-This [Next.js](https://nextjs.org/) app uses the [chakra-ui](https://next.chakra-ui.com/) component library and [Apollo Client](https://www.apollographql.com/docs/react/) to connect to your GraphQL backend out of the box.
+This [Next.js](https://nextjs.org/) app uses the [chakra-ui](https://next.chakra-ui.com/) component library and [Apollo Client](https://www.apollographql.com/docs/react/) on the frontend, and [Express](https://expressjs.com/) with [Apollo Server](https://www.apollographql.com/docs/apollo-server/) on the backend.
 
-Next.js, chakra-ui and Apollo all have built-in TypeScript declarations.
+Next.js, chakra-ui and Apollo all have built-in TypeScript declarations, while types for Express are provided by [DefinatelyTyped](https://definitelytyped.org/).
 
 The chakra-ui `ChakraProvider` in `/pages/_app.tsx` provides theming context, color mode (dark/light) and global styles from `theme.tsx` to all components.
 
 ## Deploy this demo
 
-Deploy this example using [Vercel](https://vercel.com):
+Deploy this example using [Heroku](https://www.heroku.com/) and [Vercel](https://vercel.com):
+
+Backend:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/anselbrandt/next-express)
+
+This application makes use of Redis for GraphQL subscriptions over websockets and requires that you provision the Heroku Redis add-on under the Resources tab of your application in the Heroku dashboard.
+
+Make note of the URL of your deployed application.
+
+Frontend:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/anselbrandt/next-express)
+
+Select the web subfolder to deploy the Next.js app.
+
+Enter the following `Environment Variables` before hitting the final `Deploy` button:
+
+(substituting `app_name` for your actual app name)
+
+| NAME                  | VALUE                                    |
+| --------------------- | ---------------------------------------- |
+| NEXT_PUBLIC_HTTP      | `https://app_name.herokuapp.com/graphql` |
+| NEXT_PUBLIC_WEBSOCKET | `wss://app_name.herokuapp.com/graphql`   |
+| NEXT_PUBLIC_API_URL   | `http://app_name.herokuapp.com`          |
 
 ## How to use
 

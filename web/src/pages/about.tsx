@@ -2,6 +2,7 @@ import { Box, useColorMode, Text, Link as ChakraLink } from "@chakra-ui/core";
 import { Container } from "../components/Container";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 import { createUseStyles } from "react-jss";
 import readme from "../../README.md";
 import colors from "../utils/colors";
@@ -61,6 +62,25 @@ const About: React.FC<AboutProps> = ({ defaultColor }) => {
         overflow: "scroll",
         marginBottom: "1rem",
       },
+      "& table": {
+        color: props.codeColor,
+        backgroundColor: props.bgColor,
+        padding: "1rem",
+        border: "1px solid",
+        borderColor: props.bordColor,
+        overflow: "scroll",
+        marginBottom: "1rem",
+      },
+      "& th": {
+        padding: ".5rem",
+        border: "1px solid",
+        borderColor: props.bordColor,
+      },
+      "& td": {
+        padding: ".5rem",
+        border: "1px solid",
+        borderColor: props.bordColor,
+      },
     }),
   });
 
@@ -68,7 +88,7 @@ const About: React.FC<AboutProps> = ({ defaultColor }) => {
     const classes = useStyles(props);
     return (
       <Box className={classes.markdown} mt="4rem" maxWidth="48rem">
-        <ReactMarkdown source={readme} />
+        <ReactMarkdown plugins={[gfm]} source={readme} />
       </Box>
     );
   };
