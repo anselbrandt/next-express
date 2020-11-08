@@ -53,7 +53,28 @@ or
 npm install
 ```
 
-After that:
+## Server:
+
+In separate terminal tabs or windows:
+
+```
+yarn watch
+then
+yarn dev
+```
+
+## Frontend:
+
+In another terminal tab or window:
+
+```
+cd web
+yarn
+or
+npm install
+```
+
+Then:
 
 ```
 yarn dev
@@ -71,9 +92,9 @@ npm run-script build
 
 ## Setup
 
-GraphQL server endpoints may be configured in `constants.ts` and `.env.local` ensuring to prefix variables with `NEXT_PUBLIC_` as in the `sample.env.local` file.
+GraphQL server endpoints may be configured in `/web/constants.ts` and `/web/.env.local` ensuring to prefix variables with `NEXT_PUBLIC_` as in the `/web/sample.env.local` file.
 
-The GraphQL client can be configured in `/utils/withApollo.ts`
+The GraphQL client can be configured in `web/src//utils/withApollo.ts`
 
 ## GraphQL
 
