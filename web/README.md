@@ -106,7 +106,7 @@ query QueryName {
 }
 ```
 
-After adding any new queries to the `/graphql/` folder, execute:
+After adding any new queries to the `/web/src/graphql/` folder, execute:
 
 ```
 yarn gen
@@ -114,9 +114,9 @@ or
 npm run-script gen
 ```
 
-[GraphQL code generator](https://graphql-code-generator.com/) will connect to your GraphQL server, generate typings based on your schema and output custom `hooks` to `/generated/graphql.tsx`.
+[GraphQL code generator](https://graphql-code-generator.com/) will connect to your GraphQL server, generate typings based on your schema and output custom `hooks` to `/web/src/generated/graphql.tsx`.
 
-Ensure that `codegen.yml` contains the correct URL for your GraphQL server and path to your queries.
+Ensure that `/web/codegen.yml` contains the correct URL for your GraphQL server and path to your queries.
 
 Queries can be imported as:
 
