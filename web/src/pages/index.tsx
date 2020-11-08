@@ -45,7 +45,9 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
       <Footer>
         <Text>
           Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{" "}
-          <Code>graphql</Code> + <Code>typescript</Code>.
+          <Code>graphql</Code> running on an <Code>Express</Code> +{" "}
+          <Code>Apollo Server</Code> backend, all written in{" "}
+          <Code>typescript</Code>
         </Text>
         <List spacing={3} my={0}>
           {links.map((link, index) => (

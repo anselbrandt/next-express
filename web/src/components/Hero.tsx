@@ -9,5 +9,5 @@ export const Hero = ({ title }: { title: string }) => (
 );
 
 Hero.defaultProps = {
-  title: "next-chakra-graphql.tsx",
+  title: "next-express-graphql.tsx",
 };

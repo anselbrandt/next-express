@@ -1,4 +1,4 @@
-# Next.js with chakra-ui, GraphQL and Typescript
+# Next.js with Express GraphQL backend, written in Typescript
 
 This [Next.js](https://nextjs.org/) app uses the [chakra-ui](https://next.chakra-ui.com/) component library and [Apollo Client](https://www.apollographql.com/docs/react/) to connect to your GraphQL backend out of the box.
 
@@ -10,7 +10,7 @@ The chakra-ui `ChakraProvider` in `/pages/_app.tsx` provides theming context, co
 
 Deploy this example using [Vercel](https://vercel.com):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/anselbrandt/next-chakra)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/anselbrandt/next-express)
 
 ## How to use
 
@@ -19,13 +19,13 @@ Deploy this example using [Vercel](https://vercel.com):
 Execute [`npx degit`](https://github.com/Rich-Harris/degit) to bootstrap this example:
 
 ```bash
-npx degit https://github.com/anselbrandt/next-chakra next-chakra
+npx degit https://github.com/anselbrandt/next-express next-express
 ```
 
 Then:
 
 ```
-cd next-chakra
+cd next-express
 yarn
 or
 npm install

@@ -28,7 +28,7 @@ export const CTA: React.FC<CTAProps> = ({ defaultColor }) => (
 
     <ChakraLink
       isExternal
-      href="https://github.com/anselbrandt/next-chakra/"
+      href="https://github.com/anselbrandt/next-express/"
       flexGrow={3}
       mx={2}
     >
